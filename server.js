@@ -13,7 +13,6 @@ const io = require('socket.io')(server, {
       methods: ["GET", "POST"]
     }
   });
-  
 
 // Middleware
 app.use(cors());
@@ -24,6 +23,11 @@ connectDB();
 
 // Initialize Socket.IO
 socketController(io);
+
+// Sample GET route
+app.get('/', (req, res) => {
+    res.send('Welcome to the Talk Time server!');
+});
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
